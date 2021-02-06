@@ -18,7 +18,7 @@
 	<insert id="insertBoard" parameterType="com.sseyeon.board.model.BoardVO">
 		INSERT INTO TBL_BOARD (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
 		VALUES(
-			#{cate_cd},
+			#{cate_cd,jdbcType=VARCHAR},
 			#{title},
 			#{content},
 			#{tag},
