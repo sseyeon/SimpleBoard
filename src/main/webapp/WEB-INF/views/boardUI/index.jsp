@@ -24,11 +24,11 @@ body {
 	$(document).on('click', '#btnWriteForm', function(e){
 		e.preventDefault();
 		
-		location.href = "${pageContext.request.contextPath}/boardUI/boardForm";
+		location.href = "${pageContext.request.contextPath}/boardTest/boardForm";
 	});
 	
 	function fn_contentView(bid){
-		var url = "${pageContext.request.contextPath}/boardUI/getBoardContent";
+		var url = "${pageContext.request.contextPath}/boardTest/getBoardContent";
 		url = url + "?bid="+bid;
 		location.href = url;
 	}

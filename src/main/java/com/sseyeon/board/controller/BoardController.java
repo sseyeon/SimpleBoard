@@ -1,6 +1,6 @@
 package com.sseyeon.board.controller;
 
-// URL ÁÖ¼Ò¸¦ Á¶ÇÕÇÏ´Â ¹æ¹ı
+// URL ì—°ê²°
 
 import javax.inject.Inject;
 
@@ -25,29 +25,30 @@ public class BoardController {
 	@RequestMapping(value="/getBoardList", method = RequestMethod.GET)
 	public String getBoardList(Model model) throws Exception{
 		model.addAttribute("boardList", boardService.getBoaList());
+		// return ì€ í˜ì´ì§€ê°€ ìˆëŠ” ê³³ìœ¼ë¡œ ì—°ê²°í•´ì•¼ í•¨ 
 		return "boardUI/index";
 	}
 	
-	// ±Û¾²±â È­¸é 
+	// ê¸€ì“°ê¸° í™”ë©´
 	@RequestMapping(value="/boardForm")
 	public String boardForm() {
 		return "boardUI/boardForm";
 	}
 	
-	// ±Û ÀúÀå
+	// ê¸€ ì €ì¥
 	@RequestMapping(value="/saveBoard", method= RequestMethod.POST)
-	// @ModelAttribute("BoardVO") BoardVO boardVO : È­¸é¿¡¼­ ³Ñ°ÜÁÖ´Â °ªÀ» BoardVO¿Í ¸ÅÄª½ÃÄÑ µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ¿È
-	// RedirectAttributes rttr : ±Û¾²±â ÀÌÈÄ µ¹¾Æ°¡¾ßÇÒ ÆäÀÌÁöÀÇ µ¥ÀÌÅÍ¸¦ Àü´ŞÇÏ±â À§ÇÑ ÀÎÀÚ
+	// @ModelAttribute("BoardVO") BoardVO boardVO : í™”ë©´ì—ì„œ ë„˜ê²¨ì£¼ëŠ” ê°’ì„ BoardVOì™€ ë§¤ì¹­ì‹œì¼œ ë°ì´í„°ë¥¼ ë°›ì•„ì˜´
+	// RedirectAttributes rttr : ê¸€ì“°ê¸° ì´í›„ ëŒì•„ê°€ì•¼í•  í˜ì´ì§€ì˜ ë°ì´í„°ë¥¼ ì „ë‹¬í•˜ê¸° ìœ„í•œ ì¸ì
 	public String saveBoard(@ModelAttribute("BoardVO") BoardVO boardVO, RedirectAttributes rttr) throws Exception{
 		boardService.insertBoard(boardVO);
-		return "redirect:/boardUI/getBoardList";
+		return "redirect:/boardTest/getBoardList";
 	}
 	
-	// ±Û »ó¼¼Á¶È¸
+	// ê¸€ ìƒì„¸ì¡°íšŒ
 	@RequestMapping(value="/getBoardContent", method=RequestMethod.GET)
 	public String getBoardContent(Model model, @RequestParam("bid") int bid) throws Exception{
-		// service¿¡¼­ ¹Ş¾Æ¿Â µ¥ÀÌÅÍ´Â model.addAttribute¸¦ ÅëÇØ È­¸éÀ¸·Î Àü´Ş °¡´É
-		// "boardContent"¶ó´Â ÀÌ¸§À¸·Î È­¸é¿¡ µ¥ÀÌÅÍ¸¦ Àü´Ş
+		// serviceì—ì„œ ë°›ì•„ì˜¨ ë°ì´í„°ëŠ” model.addAttributeë¥¼ í†µí•´ í™”ë©´ìœ¼ë¡œ ì „ë‹¬ ê°€ëŠ¥
+		// "boardContent"ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ í™”ë©´ì— ë°ì´í„° ì „ë‹¬
 		model.addAttribute("boardContent", boardService.getBoardContent(bid));
 		return "boardUI/boardContent";
 	}
