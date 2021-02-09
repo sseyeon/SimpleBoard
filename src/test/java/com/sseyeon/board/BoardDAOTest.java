@@ -35,7 +35,7 @@ public class BoardDAOTest {
 				logger.info(list.title);
 			}
 		} else {
-			logger.info("�����Ͱ� �����ϴ�.");
+			logger.info("데이터가 없습니다.");
 		}
 	}
 
@@ -44,16 +44,16 @@ public class BoardDAOTest {
 		BoardVO boardVO = boardDAO.getBoardContent(1);
 		logger.info("\n Board List \n");
 		if (boardVO != null) {
-			logger.info("�۹�ȣ : " + boardVO.getBid());
-			logger.info("������ : " + boardVO.getTitle());
-			logger.info("�۳��� : " + boardVO.getContent());
-			logger.info("���±� : " + boardVO.getTag());
-			logger.info("��ȸ�� : " + boardVO.getView_cnt());
-			logger.info("�ۼ��� : " + boardVO.getReg_id());
-			logger.info("�ۼ��� : " + boardVO.getReg_dt());
-			logger.info("������ : " + boardVO.getEdit_dt());
+			logger.info("글번호 : " + boardVO.getBid());
+			logger.info("글제목 : " + boardVO.getTitle());
+			logger.info("글내용 : " + boardVO.getContent());
+			logger.info("글태그 : " + boardVO.getTag());
+			logger.info("조회수 : " + boardVO.getView_cnt());
+			logger.info("작성자 : " + boardVO.getReg_id());
+			logger.info("작성일 : " + boardVO.getReg_dt());
+			logger.info("수정일 : " + boardVO.getEdit_dt());
 		} else {
-			logger.info("�����Ͱ� �����ϴ�.");
+			logger.info("데이터가 없습니다.");
 		}
 	}
 	
@@ -61,17 +61,17 @@ public class BoardDAOTest {
 	public void testInsertBoard() throws Exception{
 		BoardVO boardVO = new BoardVO();
 		boardVO.setCate_cd("1");
-		boardVO.setTitle("ù��° �Խù� ���� �Դϴ�.");
-		boardVO.setContent("ù��° �Խù� ���� �Դϴ�.");
+		boardVO.setTitle("첫번째 게시물 제목입니다.");
+		boardVO.setContent("첫번째 게시물 내용입니다.");
 		boardVO.setTag("1");
 		boardVO.setReg_id("1");
 		
 		int result = boardDAO.insertBoard(boardVO);
 		logger.info("\n Insert Board Result" + result);
 		if (result == 1) {
-			logger.info("\n �Խù� ��� ����");
+			logger.info("\n 게시물 등록 성공");
 		} else {
-			logger.info("\n �Խù� ��� ����");
+			logger.info("\n 게시물 등록 실패");
 		}
 	}
 	
@@ -79,16 +79,16 @@ public class BoardDAOTest {
 	public void testUpdateBoard() throws Exception{
 		BoardVO boardVO = new BoardVO();
 		boardVO.setCate_cd("1");
-		boardVO.setTitle("ù��° �Խù� ���� �Դϴ�. - ����");
-		boardVO.setContent("ù��° �Խù� ���� �Դϴ�. - ����");
+		boardVO.setTitle("첫번째 게시물 제목입니다 - 수정합니다");
+		boardVO.setContent("첫번째 게시물 내용입니다 - 수정합니다");
 		boardVO.setTag("1-1");
 		
 		int result = boardDAO.insertBoard(boardVO);
 		logger.info("\n Update Board Result" + result);
 		if (result == 1) {
-			logger.info("\n �Խù� ���� ����");
+			logger.info("\n 게시물 수정 성공");
 		} else {
-			logger.info("\n �Խù� ���� ����");
+			logger.info("\n 게시물 수정 실패");
 		}
 	}
 	
@@ -97,9 +97,9 @@ public class BoardDAOTest {
 		int result = boardDAO.deleteBoard(1);
 		logger.info("\n Delete Board Result \n");
 		if (result > 0) {
-			logger.info("\n �Խù� ���� ����");
+			logger.info("\n 게시물 삭제 성공");
 		} else {
-			logger.info("\n �Խù� ���� ����");
+			logger.info("\n 게시물 삭제 실패");
 		}
 	}
 	
@@ -108,9 +108,9 @@ public class BoardDAOTest {
 		int result = boardDAO.updateViewCnt(1);
 		logger.info("\n Update View Count Result \n");
 		if (result>0) {
-			logger.info("\n �Խù� ��ȸ�� ������Ʈ ����");
+			logger.info("\n 게시물 조회수 업데이트 성공");
 		} else {
-			logger.info("\n �Խù� ��ȸ�� ������Ʈ ����");
+			logger.info("\n 게시물 조회수 업데이트 실패");
 		}
 	}
 	

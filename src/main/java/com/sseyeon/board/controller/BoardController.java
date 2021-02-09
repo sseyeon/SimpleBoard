@@ -31,16 +31,23 @@ public class BoardController {
 	
 	// 글쓰기 화면
 	@RequestMapping(value="/boardForm")
-	public String boardForm() {
+	public String boardForm(@ModelAttribute("boardVO") BoardVO vo, Model model) {
 		return "boardUI/boardForm";
 	}
 	
 	// 글 저장
-	@RequestMapping(value="/saveBoard", method= RequestMethod.POST)
 	// @ModelAttribute("BoardVO") BoardVO boardVO : 화면에서 넘겨주는 값을 BoardVO와 매칭시켜 데이터를 받아옴
 	// RedirectAttributes rttr : 글쓰기 이후 돌아가야할 페이지의 데이터를 전달하기 위한 인자
-	public String saveBoard(@ModelAttribute("BoardVO") BoardVO boardVO, RedirectAttributes rttr) throws Exception{
-		boardService.insertBoard(boardVO);
+	// 저장버튼을 누를때 동작하는 페이지
+	@RequestMapping(value="/saveBoard", method= RequestMethod.POST)
+	public String saveBoard(@ModelAttribute("boardVO") BoardVO boardVO, @RequestParam("mode") String mode, RedirectAttributes rttr) throws Exception{
+		
+		if (mode.equals("edit")) {
+			boardService.updateBoard(boardVO);
+		} else {
+			boardService.insertBoard(boardVO);
+		}
+		
 		return "redirect:/boardTest/getBoardList";
 	}
 	
@@ -51,6 +58,18 @@ public class BoardController {
 		// "boardContent"라는 이름으로 화면에 데이터 전달
 		model.addAttribute("boardContent", boardService.getBoardContent(bid));
 		return "boardUI/boardContent";
+	}
+	
+	// 입력폼의 수정을 위해 사용
+	// 입력폼과 연계되는 페이지
+	// controller의 메서드는 Model 이라는 타입의 객체를 파라미터로 받을 수 있다.
+	// jsp 에서 request.setAttribute()와 비슷한 역할
+	@RequestMapping(value="/editForm", method=RequestMethod.GET)
+	public String editForm(@RequestParam("bid") int bid, @RequestParam("mode") String mode, Model model) throws Exception{
+		model.addAttribute("boardContent", boardService.getBoardContent(bid));
+		model.addAttribute("mode", mode);
+		model.addAttribute("boardVO", new BoardVO());
+		return "boardUI/boardForm";
 	}
 	
 	

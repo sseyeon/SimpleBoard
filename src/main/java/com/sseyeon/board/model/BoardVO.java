@@ -64,6 +64,6 @@ public class BoardVO {
 	public void setEdit_dt(String edit_dt) {
 		this.edit_dt = edit_dt;
 	}
-
+	
 	
 }

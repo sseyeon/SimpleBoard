@@ -24,7 +24,7 @@ public class MysqlConnectionTest {
 	@Test
 	public void testConnection() {
 		try (Connection con = ds.getConnection()){
-			logger.info("\n MySQL ¿¬°á : " + con);
+			logger.info("\n MySQL ì—°ê²° : " + con);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
