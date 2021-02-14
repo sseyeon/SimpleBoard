@@ -7,20 +7,20 @@
 <mapper namespace="com.sseyeon.board.boardMapper">
 	<select id="getBoardList" resultType="com.sseyeon.board.model.BoardVO">
 		SELECT BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
-		FROM BOARD.BOARD_TABLE
+		FROM TBL_BOARD
 	</select>
 	<select id="getBoardContent" resultType="com.sseyeon.board.model.BoardVO" parameterType="com.sseyeon.board.model.BoardVO">
 		SELECT BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
-		FROM BOARD_TABLE 
+		FROM TBL_BOARD 
 		WHERE BID = #{bid}
 	</select>
 	
 	<insert id="insertBoard" parameterType="com.sseyeon.board.model.BoardVO">
-		INSERT INTO BOARD_TABLE (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
+		INSERT INTO TBL_BOARD (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT)
 		VALUES(
 			#{cate_cd,jdbcType=VARCHAR},
 			#{title},
-			#{content},
+			#{content,jdbcType=VARCHAR},
 			#{tag},
 			0,
 			#{reg_id},
@@ -30,20 +30,20 @@
 	</insert>
 	
 	<update id="updateBoard" parameterType="com.sseyeon.board.model.BoardVO">
-		UPDATE BOARD_TABLE SET CATE_CD = #{cate_cd},
+		UPDATE TBL_BOARD SET CATE_CD = #{cate_cd},
 		TITLE = #{title},
-		CONTENT = #{content},
+		CONTENT = #{content,jdbcType=VARCHAR},
 		TAG = #{tag},
 		EDIT_DT = now()
-		WHERE BID = ${bid}
+		WHERE BID = #{bid}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">
-		DELETE FROM BOARD_TABLE WHERE BID = #{bid}
+		DELETE FROM TBL_BOARD WHERE BID = #{bid}
 	</delete>
 	
 	<update id="updateViewCnt" parameterType="com.sseyeon.board.model.BoardVO">
-		UPDATE BOARD_TABLE SET VIEW_CNT = VIEW_CNT+1 WHERE BID = #{bid}
+		UPDATE TBL_BOARD SET VIEW_CNT = VIEW_CNT+1 WHERE BID = #{bid}
 	</update>
 	
 </mapper>

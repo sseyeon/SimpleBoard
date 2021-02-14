@@ -30,7 +30,7 @@
 		var mode = '<c:out value="${mode}"/>';
 		if (mode == 'edit'){
 			// 입력 폼 셋팅
-			$("#reg_id").prop('readonly', true);	// 작성자 이름 수정 불가
+			$('#reg_id').attr('readonly', true);
 			$("input:hidden[name='bid']").val('<c:out value="${boardContent.bid}"/>');
 			$("input:hidden[name='mode']").val('<c:out value="${mode}"/>');
 			$("#reg_id").val('<c:out value="${boardContent.reg_id}"/>');

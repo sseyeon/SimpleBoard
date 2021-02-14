@@ -37,7 +37,7 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public int deleteBoard(int bid) throws Exception {
-		return sqlSession.delete("com.sseyeon.board.boardMapper.deleteBorad", bid);
+		return sqlSession.delete("com.sseyeon.board.boardMapper.deleteBoard", bid);
 	}
 
 	@Override

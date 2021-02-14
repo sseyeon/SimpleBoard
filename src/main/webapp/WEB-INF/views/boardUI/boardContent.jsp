@@ -21,6 +21,13 @@
 		
 		location.href = url;
 	});
+	
+	// 삭제버튼 클릭 이벤트
+	$(document).on('click', '#btnDelete', function(){
+		var url = "${pageContext.request.contextPath}/boardTest/deleteBoard";
+		url = url + "?bid=" + ${boardContent.bid};
+		location.href = url;
+	});
 </script>
 
 </head>
@@ -30,13 +37,13 @@
 			<h2>board Content</h2>
 			
 			<div class="bg-white rounded shadow-sm">
-				<div class="board_title"><c:out value="${boardContent.title}"/></div>
+				<div class="board_title">${boardContent.title}</div>
 				<div class="board_info_box">
-					<span class="board_author"><c:out value="${boardContent.reg_id}"/></span>
-					<span class="board_date"><c:out value="${boardContent.reg_dt}"/></span>
+					<span class="board_author">${boardContent.reg_id}</span>
+					<span class="board_date">${boardContent.reg_dt}</span>
 				</div>
 				<div class="board_content">${boardContent.content}</div>
-				<div class="board_tag">TAG : <c:out value="${boardContent.tag}"/></div>
+				<div class="board_tag">TAG : "${boardContent.tag}"</div>
 			</div>
 		</div>
 		

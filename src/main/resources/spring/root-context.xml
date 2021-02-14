@@ -18,9 +18,9 @@
 	<!-- <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 	<property name="url" value="jdbc:mysql://127.0.0.1:3306/mess?useSSL=false&amp;serverTimezone=Asia/Seoul" />    -->   
 	        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-       		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/board?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Seoul" />
-	        <property name="username" value="board"></property>
-	        <property name="password" value="board"></property>
+       		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/mess?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Seoul" />
+	        <property name="username" value="mess"></property>
+	        <property name="password" value="mess"></property>
 	</bean>  
 	
 	<!-- SqlSessionFactory 객체 설정 -->
