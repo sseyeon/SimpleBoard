@@ -31,8 +31,8 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public int updateBoard(BoardVO boardVO) throws Exception {
-		return sqlSession.update("com.sseyeon.board.boardMapper.updateBoard", boardVO);
+	public void updateBoard(BoardVO boardVO) throws Exception {
+		sqlSession.update("com.sseyeon.board.boardMapper.updateBoard", boardVO);
 	}
 
 	@Override
